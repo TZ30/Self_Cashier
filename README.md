@@ -1,4 +1,4 @@
-# 1stProject_SelfCashier
+# First Project (Self_Cashier)
 
 Welcome to 1stProject_SelfCashier! This is a simple self-checkout system implemented in Python. The system allows users to manage items in their shopping cart, perform various operations such as adding, removing, and updating items, calculate the total cost including discounts, and complete the purchase.
 
