@@ -26,7 +26,7 @@ class Transaction:
                 raise Exception("Barang tidak ada")
                 
     def update_quantity(self, item_name, new_quantity):
-        for i, (name, _, _) in enumerate(self.items):
+        for i, (item_name, _, _) in enumerate(self.items):
             if name == item_name:
                 self.items[i] = (name, new_quantity, self.items[i][2])
                 return

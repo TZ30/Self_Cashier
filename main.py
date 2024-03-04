@@ -3,130 +3,120 @@ from FuncTransaction import Transaction
 
 def main():
     var = Transaction()
-
-    welcome = input("Selamat datang di Toko A, masukan nama anda: ").capitalize()
+    welcome = input("Selamat datang di Toko A, masukkan nama Anda: ").capitalize()
 
     while True:
-        print("")
-        print("Pilih menu dibawah ini: ")
+        print("\nPilih menu dibawah ini: ")
         print("1. Tambah Barang")
         print("2. Hapus Barang")
         print("3. Perbarui Barang")
         print("4. Keranjang Anda")
         print("5. Pembayaran")
-        print("6. Keluar")
-        print("")
-        
-        choice = input("Masukan pilihan anda: ")
+        print("6. Keluar\n")
+
+        choice = input("Masukkan pilihan Anda: ")
+
         if choice == "1":
             while True:
                 try:
-                    item = input("Masukan nama barang: ").strip().capitalize()  
+                    item = input("Masukkan nama barang: ").strip().capitalize()  
                     if not item.isalpha():
-                        print("")
                         raise ValueError("Pastikan nama barang menggunakan huruf")
-                    quantity = int(input("Masukan jumlah barang: "))
-                    price = float(input("Masukan harga barang: "))
+                    quantity = int(input("Masukkan jumlah barang: "))
+                    price = float(input("Masukkan harga barang: "))
                     var.add_item(item, quantity, price)
-                    print("")
-                    print("Berhasil menambahkan barang dalam keranjang anda!")
+                    print("\nBerhasil menambahkan barang dalam keranjang Anda!")
                     break
-                except ValueError:
-                    print("Pastikan nama barang diisi dengan benar dan jumlah serta harga barang menggunakan angka!")
+                except ValueError as e:
+                    print(e)
                     
         elif choice == "2":
             try:
-                item = str(input("Masukan nama barang: ")).capitalize()
+                item = input("Masukkan nama barang: ").capitalize()
                 var.remove_item(item)
-                print("")
-                print("Barang telah berhasil dihapus!")
+                print("\nBarang telah berhasil dihapus!")
             except Exception as e:
-                print("")
                 print(e)
-                
+
         elif choice == "3":
-            print("Perbarui: ")
-            print('1. Nama Barang')
-            print('2. Jumlah Barang')
-            print('3. Harga Barang')
-            print('4. Keluar')
-            print("")
+            print("\nPerbarui: ")
+            print("1. Nama Barang")
+            print("2. Jumlah Barang")
+            print("3. Harga Barang")
+            print("4. Keluar")
+
+            choice_2 = input("\nMasukkan pilihan Anda: ")
+
+            if choice_2 == "1":  
+                try:
+                    old_item = input("Masukkan nama barang yang ingin dirubah: ").strip().capitalize()
+                    new_item = input("Masukkan nama barang yang baru: ").strip().capitalize()
+                    var.update_item_name(old_item, new_item)
             
-            while True:
-                choice_2 = input("Masukan pilihan anda: ")
-                if choice_2 == "1":  
-                    try:
-                        item = input("Masukkan nama barang: ").strip().capitalize()
-                        if not item.isalpha():
-                            print("")
-                            raise ValueError("Pastikan nama barang menggunakan huruf!")
-                        quantity = int(input("Masukkan jumlah barang: "))
-                        price = float(input("Masukkan harga barang: "))
-                        var.update_item(item, quantity, price)
-                        print("Data barang berhasil diupdate!")
-                        break
-                    except Exception as e:
-                        print("")
-                        print(e)
-                        
-                elif choice_2 == "2":
-                    try:
-                        quantity = int(input("Masukan jumlah barang kembali: "))
-                        var.update_quantity(item, quantity)
-                        print("")
-                        print("Jumlah barang berhasil diganti!")
-                        
-                    except Exception as e:
-                        print("")
-                        print(e)
-                        break
-                        
-                elif choice_2 == "3":
-                    try:
-                        price = float(input("Masukan harga barang kembali: ")) 
-                        var.update_price(item, price)
-                        print("")
-                        print("Harga barang berhasil diganti!")
-                        
-                    except Exception as e:
-                        print("")
-                        print(e)
-                        break
-                        
-                elif choice_2 == "4":
-                    break
+                    quantity = int(input("Masukkan jumlah barang baru: "))
+                    price = float(input("Masukkan harga barang baru: ")) 
                     
-                else:
-                    raise Exception("Opsi yang tersedia hanya 1,2,3,4")
+                    if new_item in var.items:
+                        if quantity != var.items[new_item][0]:
+                            var.update_quantity(new_item, quantity)
                     
-                            
+                        if price != var.items[new_item][1]:
+                            var.update_price(new_item, price)
+                    
+                    print("\nData barang berhasil diupdate!")      
+                              
+                except Exception as e:
+                    print(e)
+
+            elif choice_2 == "2":
+                try:
+                    item = input("Masukkan nama barang yang ingin diubah jumlahnya: ").strip().capitalize()
+                    quantity = int(input("Masukkan jumlah barang baru: "))
+                    var.update_quantity(item, quantity)
+                    print("\nJumlah barang berhasil diubah!")
+                except Exception as e:
+                    print(e)
+
+            elif choice_2 == "3":
+                try:
+                    item = input("Masukkan nama barang yang ingin diubah harganya: ").strip().capitalize()
+                    price = float(input("Masukkan harga barang baru: ")) 
+                    var.update_price(item, price)
+                    print("\nHarga barang berhasil diubah!")
+                except Exception as e:
+                    print(e)
+
+            elif choice_2 == "4":
+                continue
+
+            else:
+                print("Pilihan tidak valid. Silakan pilih lagi.")
+
         elif choice == "4":
+            print(f"\n--------------- Keranjang Anda, {welcome} ------------------")
             total_cost, discount_info = var.calculate_total()
-            print("")
-            print(f"--------------- Keranjang Ada {welcome} ------------------")
-            print("")
-            print(f"Selamat {welcome} Anda Mendapatkan {discount_info}!!!")
+            print(f"\nSelamat {welcome} Anda Mendapatkan {discount_info}!!!")
             print("")
             var.check()
-        
+
         elif choice == "5":
-            print("")
-            print("Konfirmasi pembelajaan anda")
-            final_confirm = input("'Y' Melanjutkan Pembayaran, 'N' Membatalkann Pembelian-: ").capitalize()
-            
+            print("\nKonfirmasi pembelian Anda")
+            final_confirm = input("'Y' Melanjutkan Pembayaran, 'N' Membatalkann Pembelian: ").capitalize()
             if final_confirm == "Y":
-                print("")
-                print (f"Terimakasih Sudah Berbelanja di Toko Kami")
-                print ("-------------- Struk Anda ---------------")
+                print(f"\nTerima kasih sudah berbelanja di Toko Kami, {welcome}!")
+                print("\n-------------- Struk Pembelian Anda ---------------")
                 var.check()
                 break
             else:
-                print("")
-                print("Telah berhasil membatalkan pembelian!")
+                print("\nPembelian dibatalkan!")
                 break
-                
-        else:
+
+        elif choice == "6":
+            print("\nTerima kasih, sampai jumpa lagi!")
             break
+
+        else:
+            print("\nPilihan tidak valid. Silakan pilih lagi.")
 
 if __name__ == "__main__":
     main()
