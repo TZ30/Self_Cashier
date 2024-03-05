@@ -19,7 +19,7 @@ def main():
         if choice == "1":
             while True:
                 try:
-                    item = input("Masukkan nama barang: ").strip().capitalize() 
+                    item = str(input("Masukkan nama barang: ")).strip().capitalize() 
                     quantity = int(input("Masukkan jumlah barang: "))
                     price = float(input("Masukkan harga barang: "))
                     var.add_item(item, quantity, price)
