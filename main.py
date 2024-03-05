@@ -19,7 +19,7 @@ def main():
         if choice == "1":
             while True:
                 try:
-                    item = str(input("Masukkan nama barang: ")).strip().capitalize() 
+                    item = str(input("Masukkan nama barang: ")).strip().capitalize()  
                     quantity = int(input("Masukkan jumlah barang: "))
                     price = float(input("Masukkan harga barang: "))
                     var.add_item(item, quantity, price)
@@ -47,8 +47,8 @@ def main():
 
             if choice_2 == "1":  
                 try:
-                    old_item = input("Masukkan nama barang yang ingin dirubah: ").strip().capitalize()
-                    new_item = input("Masukkan nama barang yang baru: ").strip().capitalize()
+                    old_item = str(input("Masukkan nama barang yang ingin dirubah: ")).strip().capitalize()
+                    new_item = str(input("Masukkan nama barang yang baru: ")).strip().capitalize()
                     var.update_item_name(old_item, new_item)
             
                     quantity = int(input("Masukkan jumlah barang baru: "))
