@@ -1,6 +1,6 @@
 # First Project (Self_Cashier)
 
-Welcome to my first project Self_Cashier! This is a simple self-checkout system implemented in Python. The system allows users to manage items in their shopping cart, perform various operations such as adding, removing, and updating items, calculate the total cost including discounts, and complete the purchase.
+Welcome to my first project Self_Cashier! This is a simple self-checkout system implemented in Python. The system allows users to manage items in their shopping cart, perform various operations such as adding, removing, and updating items, calculate the total cost including discounts, and complete the purchase. 
 
 ## Flow Chart
 #### Welcome | Start - *Input User
