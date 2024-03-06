@@ -19,6 +19,7 @@ Welcome to my first project Self_Cashier! This is a simple self-checkout system 
 - Update item details (name, quantity, price) in the shopping cart.
 - Calculate total cost with discounts applied.
 - Complete the purchase and generate a receipt.
+- Check items in the cart.
 
 ## Installation
 
@@ -35,4 +36,4 @@ Welcome to my first project Self_Cashier! This is a simple self-checkout system 
 ## Usage
 Run the main.py file:
 ```bash
-python Main.py
+python main.py
