@@ -4,7 +4,7 @@ Welcome to my first project Self_Cashier! This is a simple self-checkout system 
 
 ## Flow Chart
 - Welcome | Mulai - *Input User
----- While loop - Menu ----
+[ While loop - Menu ]
 - Opsi 1  (Add Item)
 - Opsi 2 (Remove or Clear Item) -- While loop remove_choice - break (Menu)
 - Opsi 3 (Update Item: Name, Qty & price) -- While loop update_choice - break (Menu)
