@@ -52,6 +52,9 @@ class Transaction:
         self.total = total_cost
         return total_cost, discount_info
     
+    def reset_transaction(self):
+        self.items.clear()
+    
     def check(self):
         total_cost, discount_info = self.calculate_total()
         headers = ["No",  "Nama Item", "Jumlah Item", "Harga Item"]
